@@ -13,6 +13,7 @@ public class CollisionHandler : MonoBehaviour
     int currSceneIdx;
     int sceneCount;
     [SerializeField] float crashDelay = 1f;
+    [SerializeField] float successDelay = 1f;
 
     void Start() {
 
@@ -31,6 +32,7 @@ public class CollisionHandler : MonoBehaviour
                 break;
             case "Finish":
                 Debug.Log("You have reached the FINISH object!");
+                StartSuccessSequence();
                 break;
             case "Fuel":
                 Debug.Log("You have encountered FUEL!");
@@ -54,6 +56,15 @@ public class CollisionHandler : MonoBehaviour
 
     }
 
+    void StartSuccessSequence() {
+
+        // todo add SFX upon success
+        // todo add animation upon success
+        GetComponent<Movement>().enabled = false;
+        GetComponent<AudioSource>().enabled = false;
+
+        Invoke(nameof(LoadNextLevel), successDelay);
+    }
 
     void ReloadLevel() {
         SceneManager.LoadScene(currSceneIdx);
