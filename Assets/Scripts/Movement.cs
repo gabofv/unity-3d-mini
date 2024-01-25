@@ -6,13 +6,19 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    Rigidbody rigidBody;
-
-    AudioSource audioSource;
+    // PARAMS
+    // CACHE
+    // STATE
 
     [SerializeField] float mainThrust = 100f;
     
     [SerializeField] float rotationThrust = 1f;
+    [SerializeField] AudioClip thrustAudio;
+
+    Rigidbody rigidBody;
+
+    AudioSource audioSource;
+
     
     // Start is called before the first frame update
     void Start()
@@ -39,7 +45,7 @@ public class Movement : MonoBehaviour
             rigidBody.AddRelativeForce(thrustVec);
             
             if (!audioSource.isPlaying)
-                audioSource.Play();
+                audioSource.PlayOneShot(thrustAudio);
         
         }
         else {
