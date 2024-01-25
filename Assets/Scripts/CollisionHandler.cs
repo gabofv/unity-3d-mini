@@ -8,12 +8,18 @@ static class Constants {
 
 public class CollisionHandler : MonoBehaviour
 {
+    [SerializeField] float crashDelay = 1f;
+    [SerializeField] float successDelay = 1f;
+    [SerializeField] AudioClip explosionAudio;
+    [SerializeField] AudioClip successAudio;
+
+    AudioSource audioSource;
 
     // Create a new class in charge of loading scenes!
     int currSceneIdx;
     int sceneCount;
-    [SerializeField] float crashDelay = 1f;
-    [SerializeField] float successDelay = 1f;
+
+    bool isGameLive = true;
 
     void Start() {
 
@@ -21,9 +27,15 @@ public class CollisionHandler : MonoBehaviour
 
         // Should it be included only in the method used?
         sceneCount = SceneManager.sceneCountInBuildSettings;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision other) {
+
+        if (!isGameLive) {
+            return;
+        }
 
         switch (other.gameObject.tag)
         {
@@ -49,8 +61,14 @@ public class CollisionHandler : MonoBehaviour
 
         // todo add SFX upon crash
         // todo add crash particles upon crash
+
+        isGameLive = false;
+
         GetComponent<Movement>().enabled = false;
-        GetComponent<AudioSource>().enabled = false;
+
+        audioSource.Stop();
+
+        audioSource.PlayOneShot(explosionAudio);
 
         Invoke(nameof(ReloadLevel), crashDelay);
 
@@ -60,8 +78,14 @@ public class CollisionHandler : MonoBehaviour
 
         // todo add SFX upon success
         // todo add animation upon success
+
+        isGameLive = false;
+
         GetComponent<Movement>().enabled = false;
-        GetComponent<AudioSource>().enabled = false;
+
+        audioSource.Stop();
+
+        audioSource.PlayOneShot(successAudio);
 
         Invoke(nameof(LoadNextLevel), successDelay);
     }
