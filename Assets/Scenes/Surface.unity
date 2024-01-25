@@ -678,14 +678,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2367212044776909959, guid: 996295a071d146543811ad5634527765, type: 3}
-      propertyPath: crashDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367212044776909959, guid: 996295a071d146543811ad5634527765, type: 3}
-      propertyPath: successDelay
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6950273870100974929, guid: 996295a071d146543811ad5634527765, type: 3}
       propertyPath: m_Name
       value: Rocket
