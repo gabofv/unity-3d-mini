@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,8 +9,12 @@ public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float crashDelay = 1f;
     [SerializeField] float successDelay = 1f;
+
     [SerializeField] AudioClip explosionAudio;
     [SerializeField] AudioClip successAudio;
+
+    [SerializeField] ParticleSystem explosionParticles;
+    [SerializeField] ParticleSystem successParticles;
 
     AudioSource audioSource;
 
@@ -65,6 +68,8 @@ public class CollisionHandler : MonoBehaviour
         isGameLive = false;
 
         GetComponent<Movement>().enabled = false;
+        
+        explosionParticles.Play();
 
         audioSource.Stop();
 
@@ -82,6 +87,8 @@ public class CollisionHandler : MonoBehaviour
         isGameLive = false;
 
         GetComponent<Movement>().enabled = false;
+
+        successParticles.Play();
 
         audioSource.Stop();
 
