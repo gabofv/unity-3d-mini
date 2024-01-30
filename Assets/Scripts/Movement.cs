@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -13,7 +10,12 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThrust = 100f;
     
     [SerializeField] float rotationThrust = 1f;
+
     [SerializeField] AudioClip thrustAudio;
+
+    [SerializeField] ParticleSystem mainThrustParticles;
+    [SerializeField] ParticleSystem leftThrustParticles;
+    [SerializeField] ParticleSystem rightThrustParticles;
 
     Rigidbody rigidBody;
 
@@ -38,38 +40,77 @@ public class Movement : MonoBehaviour
 
         bool spaceIsPressed = Input.GetKey(KeyCode.Space);
 
-        Vector3 thrustVec = Vector3.up * mainThrust * Time.deltaTime;
+        if (spaceIsPressed)
+        {
+            ApplyThrust();
 
-        if (spaceIsPressed) {
-            
-            rigidBody.AddRelativeForce(thrustVec);
-            
-            if (!audioSource.isPlaying)
-                audioSource.PlayOneShot(thrustAudio);
-        
         }
         else {
+            // Stop thrust
             audioSource.Stop();
+            mainThrustParticles.Stop();
         }
         
+    }
+
+    private void ApplyThrust()
+    {
+        Vector3 thrustVec = Vector3.up * mainThrust * Time.deltaTime;
+
+        rigidBody.AddRelativeForce(thrustVec);
+
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(thrustAudio);
+
+        if (!mainThrustParticles.isPlaying)
+            mainThrustParticles.Play();
     }
 
     void ProcessRotation() {
-
         bool dPressed = Input.GetKey(KeyCode.D);
         bool aPressed = Input.GetKey(KeyCode.A);
 
-        if (aPressed && !dPressed) {
-            ApplyRotation(rotationThrust);
+        if (aPressed && !dPressed)
+        {
+            RotateLeft();
+
         }
-        else if (dPressed && !aPressed) {
-            ApplyRotation(rotationThrust * -1);
+        else if (dPressed && !aPressed)
+        {
+            RotateRight();
+        }
+        else {
+            rightThrustParticles.Stop();
+            leftThrustParticles.Stop();
         }
     }
-    
+
+    private void RotateRight()
+    {
+        // To avoid having left side particles at the same time
+        rightThrustParticles.Stop();
+
+        ApplyRotation(rotationThrust * -1);
+
+        if (!leftThrustParticles.isPlaying)
+            leftThrustParticles.Play();
+    }
+
+    private void RotateLeft()
+    {
+        // To avoid having right side particles at the same time
+        leftThrustParticles.Stop();
+
+        ApplyRotation(rotationThrust);
+
+        if (!rightThrustParticles.isPlaying)
+            rightThrustParticles.Play();
+    }
+
     void ApplyRotation(float rotationThrustArg) {
         rigidBody.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThrustArg * Time.deltaTime);
         rigidBody.freezeRotation = false;
     }
+
 }
