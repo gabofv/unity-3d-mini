@@ -87,19 +87,24 @@ public class Movement : MonoBehaviour
 
     private void RotateRight()
     {
-        // To avoid having left side particles at the same time
-        rightThrustParticles.Stop();
+        // Stop opposite thrust particles if active
+        if (rightThrustParticles.isPlaying) {
+            rightThrustParticles.Stop();
+        }
 
         ApplyRotation(rotationThrust * -1);
 
-        if (!leftThrustParticles.isPlaying)
+        if (!leftThrustParticles.isPlaying) {
             leftThrustParticles.Play();
+        }
     }
 
     private void RotateLeft()
     {
-        // To avoid having right side particles at the same time
-        leftThrustParticles.Stop();
+        // Stop opposite thrust particles if active
+        if (leftThrustParticles.isPlaying) {
+            leftThrustParticles.Stop();
+        }
 
         ApplyRotation(rotationThrust);
 
