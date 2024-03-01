@@ -13,8 +13,10 @@ public class PlayerMovement : MonoBehaviour
     // Can also manage everything in script or every frame using Update()
      
     void Awake() {
+
         _movementActionMap = _playerActionsAsset.FindActionMap("movement");
         _moveKeys = _movementActionMap["move"];
+
     }
 
     void OnEnable() {
@@ -22,15 +24,13 @@ public class PlayerMovement : MonoBehaviour
         // Enable all actions in this action map
         _movementActionMap.Enable();
 
-        // _moveKeys.performed += OnMove;
     }
 
     void OnDisable() {
 
-        // _moveKeys.performed -= OnMove;
-
         // Disable all actions in this action map
         _movementActionMap.Disable();
+
     }
 
     void Update() {
@@ -40,8 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_moveKeys.IsPressed()) {
             
-            horizontalThrow = _moveKeys.ReadValue<Vector2>().x * Time.deltaTime * _moveSpeed;
-            
+            horizontalThrow = _moveKeys.ReadValue<Vector2>().x * Time.deltaTime * _moveSpeed;            
             verticalThrow = _moveKeys.ReadValue<Vector2>().y * Time.deltaTime * _moveSpeed;
 
         }
