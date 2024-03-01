@@ -37,14 +37,25 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void Update() {
+    void Update()
+    {
+        ProcessTranslation();
+        ProcessRotation();
+    }
 
+    private void ProcessRotation() {
+        
+    }
+
+    private void ProcessTranslation()
+    {
         float horizontalThrow = 0f;
         float verticalThrow = 0f;
 
-        if (_moveKeys.IsPressed()) {
-            
-            horizontalThrow = _moveKeys.ReadValue<Vector2>().x * Time.deltaTime * _moveSpeed;            
+        if (_moveKeys.IsPressed())
+        {
+
+            horizontalThrow = _moveKeys.ReadValue<Vector2>().x * Time.deltaTime * _moveSpeed;
             verticalThrow = _moveKeys.ReadValue<Vector2>().y * Time.deltaTime * _moveSpeed;
 
         }
@@ -56,8 +67,12 @@ public class PlayerMovement : MonoBehaviour
         float clampedYPos = Mathf.Clamp(rawYPos, -_yAxisRange, _yAxisRange);
 
         float currentZPos = transform.localPosition.z;
-        
+
+        ApplyTranslation(clampedXPos, clampedYPos, currentZPos);
+    }
+
+    private void ApplyTranslation(float clampedXPos, float clampedYPos, float currentZPos)
+    {
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, currentZPos);
     }
-    
 }
