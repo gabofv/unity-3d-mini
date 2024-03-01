@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
 
     [SerializeField] InputActionAsset _playerActionsAsset;
     [SerializeField] float _moveSpeed = 1f;
@@ -12,14 +11,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float _yAxisRange = 5f;
 
     InputActionMap _movementActionMap;
-    InputAction _moveKeys;
+    InputAction _moveAction;
 
     // Can also manage everything in script or every frame using Update()
-     
+
     void Awake() {
 
         _movementActionMap = _playerActionsAsset.FindActionMap("movement");
-        _moveKeys = _movementActionMap["move"];
+        _moveAction = _movementActionMap["move"];
 
     }
 
@@ -37,28 +36,23 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        ProcessTranslation();
-        ProcessRotation();
+    void Update() {
+
+        if (_moveAction.IsPressed()) {
+            ProcessTranslation();
+            ProcessRotation();
+        }
+
     }
 
     private void ProcessRotation() {
-        
+
     }
 
-    private void ProcessTranslation()
-    {
-        float horizontalThrow = 0f;
-        float verticalThrow = 0f;
+    private void ProcessTranslation() {
 
-        if (_moveKeys.IsPressed())
-        {
-
-            horizontalThrow = _moveKeys.ReadValue<Vector2>().x * Time.deltaTime * _moveSpeed;
-            verticalThrow = _moveKeys.ReadValue<Vector2>().y * Time.deltaTime * _moveSpeed;
-
-        }
+        float horizontalThrow = _moveAction.ReadValue<Vector2>().x * Time.deltaTime * _moveSpeed;
+        float verticalThrow = _moveAction.ReadValue<Vector2>().y * Time.deltaTime * _moveSpeed;
 
         float rawXPos = horizontalThrow + transform.localPosition.x;
         float rawYPos = verticalThrow + transform.localPosition.y;
@@ -69,10 +63,12 @@ public class PlayerMovement : MonoBehaviour
         float currentZPos = transform.localPosition.z;
 
         ApplyTranslation(clampedXPos, clampedYPos, currentZPos);
+
     }
 
-    private void ApplyTranslation(float clampedXPos, float clampedYPos, float currentZPos)
-    {
+    private void ApplyTranslation(float clampedXPos, float clampedYPos, float currentZPos) {
+
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, currentZPos);
+
     }
 }
