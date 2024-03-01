@@ -71,8 +71,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Imported unused packages
+# VSCode config for K&R indentation
+.editorconfig
 
-# StarSparrow (spaceship) files
+# Imported and unused from Unity Asset Store
+
+# StarSparrow files
 /[Aa]ssets/StarSparrow/
 /[Aa]ssets/StarSparrow.meta
