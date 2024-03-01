@@ -659,7 +659,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerActionsAsset: {fileID: -944628639613478452, guid: 307f32b0ebb94a949a2384eec6606067, type: 3}
-  _moveSpeed: 1
+  _moveSpeed: 10
+  _xAxisRange: 5
+  _yAxisRange: 5
 --- !u!1001 &5066024347358828124
 PrefabInstance:
   m_ObjectHideFlags: 0
