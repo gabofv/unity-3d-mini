@@ -5,7 +5,11 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] InputActionAsset _playerActionsAsset;
-    [SerializeField] float _moveSpeed = 1.0f;
+    [SerializeField] float _moveSpeed = 1f;
+
+    // The GameObject this is attached to must be at (0;0) for coherence and camara centered
+    [SerializeField] float _xAxisRange = 5f;
+    [SerializeField] float _yAxisRange = 5f;
 
     InputActionMap _movementActionMap;
     InputAction _moveKeys;
@@ -45,10 +49,15 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        float xPos = horizontalThrow + transform.localPosition.x;
-        float yPos = verticalThrow + transform.localPosition.y;
+        float rawXPos = horizontalThrow + transform.localPosition.x;
+        float rawYPos = verticalThrow + transform.localPosition.y;
+
+        float clampedXPos = Mathf.Clamp(rawXPos, -_xAxisRange, _xAxisRange);
+        float clampedYPos = Mathf.Clamp(rawYPos, -_yAxisRange, _yAxisRange);
+
+        float currentZPos = transform.localPosition.z;
         
-        transform.localPosition = new Vector3(xPos, yPos, transform.localPosition.z);
+        transform.localPosition = new Vector3(clampedXPos, clampedYPos, currentZPos);
     }
     
 }
