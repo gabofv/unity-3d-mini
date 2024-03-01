@@ -1,7 +1,4 @@
-# This .gitignore file should be placed at the root of your Unity project directory
-#
-# Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
-#
+# General
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -73,3 +70,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Imported unused packages
+
+# StarSparrow (spaceship) files
+/[Aa]ssets/StarSparrow/
+/[Aa]ssets/StarSparrow.meta
