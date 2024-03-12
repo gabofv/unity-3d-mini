@@ -62,8 +62,14 @@ public class PlayerMovement : MonoBehaviour {
     private void ProcessRotation() {
 
         // Using clamped position values
-        float pitch = -1 * (transform.localPosition.y * _pitchPositionFactor + _yThrow * _pitchThrowFactor);
-        float roll = -1 * (transform.localPosition.x * _rollPositionFactor + _xThrow * _rollThrowFactor);
+        float pitchMovement = transform.localPosition.y * _pitchPositionFactor;
+        float rollMovement = transform.localPosition.x * _rollPositionFactor;
+
+        float pitchDirection = _yThrow* _pitchThrowFactor;
+        float rollDirection = _xThrow * _rollThrowFactor;
+
+        float pitch = -1 * (pitchMovement + pitchDirection);
+        float roll = -1 * (rollMovement + rollDirection);
         float yaw = transform.localPosition.x * _yawPositionFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
