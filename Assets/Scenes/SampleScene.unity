@@ -665,7 +665,7 @@ MonoBehaviour:
   _pitchPositionFactor: 2
   _rollPositionFactor: 3
   _yawPositionFactor: 1
-  _pitchThrowFactor: 10
+  _pitchThrowFactor: 5
   _rollThrowFactor: 10
 --- !u!1001 &5066024347358828124
 PrefabInstance:
