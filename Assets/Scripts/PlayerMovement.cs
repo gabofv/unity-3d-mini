@@ -49,13 +49,14 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update() {
 
-        if (_moveAction.IsPressed())
-        {
+        // Conditional removed for player visualization purposes
+        // if (_moveAction.IsPressed())
+        // {
 
             ProcessTranslation();
             ProcessRotation();
 
-        }
+        // }
 
     }
 
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour {
         float pitchMovement = transform.localPosition.y * _pitchPositionFactor;
         float rollMovement = transform.localPosition.x * _rollPositionFactor;
 
-        float pitchDirection = _yThrow* _pitchThrowFactor;
+        float pitchDirection = _yThrow * _pitchThrowFactor;
         float rollDirection = _xThrow * _rollThrowFactor;
 
         float pitch = -1 * (pitchMovement + pitchDirection);
