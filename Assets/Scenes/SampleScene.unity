@@ -123,6 +123,84 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &468940546
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2387469928003081790}
+    m_Modifications:
+    - target: {fileID: 24391372830598141, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_Name
+      value: Laser Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.b
+      value: 0.18679237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.g
+      value: 0.18679237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+--- !u!4 &468940547 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+  m_PrefabInstance: {fileID: 468940546}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &487635607
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +635,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1656618735767108381, guid: 84ce29f3fee240a479363cff0b0d624a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1851261688}
+    - targetCorrespondingSourceObject: {fileID: 1656618735767108381, guid: 84ce29f3fee240a479363cff0b0d624a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 468940547}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84ce29f3fee240a479363cff0b0d624a, type: 3}
 --- !u!4 &2387469928003081790 stripped
@@ -574,7 +655,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 24391372830598141, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
       propertyPath: m_Name
-      value: Laser
+      value: Laser Right
       objectReference: {fileID: 0}
     - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
       propertyPath: TrailModule.lifetime.scalar
