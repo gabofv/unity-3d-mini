@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerControls : MonoBehaviour {
 
     [SerializeField] InputActionAsset _playerActionsAsset;
 
@@ -11,8 +11,9 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] float _xAxisRange = 5f;
     [SerializeField] float _yAxisRange = 5f;
 
-    InputActionMap _movementActionMap;
+    InputActionMap _controlsActionMap;
     InputAction _moveAction;
+    InputAction _fireAction;
 
     [SerializeField] float _pitchPositionFactor = 1f;
     [SerializeField] float _rollPositionFactor = 1f;
@@ -28,22 +29,23 @@ public class PlayerMovement : MonoBehaviour {
 
     void Awake() {
 
-        _movementActionMap = _playerActionsAsset.FindActionMap("movement");
-        _moveAction = _movementActionMap["move"];
+        _controlsActionMap = _playerActionsAsset.FindActionMap("playerControls");
+        _moveAction = _controlsActionMap["move"];
+        _fireAction = _controlsActionMap["fire"];
 
     }
 
     void OnEnable() {
 
         // Enable all actions in this action map
-        _movementActionMap.Enable();
+        _controlsActionMap.Enable();
 
     }
 
     void OnDisable() {
 
         // Disable all actions in this action map
-        _movementActionMap.Disable();
+        _controlsActionMap.Disable();
 
     }
 
@@ -55,6 +57,7 @@ public class PlayerMovement : MonoBehaviour {
 
             ProcessTranslation();
             ProcessRotation();
+            ProcessFire();
 
         // }
 
@@ -101,5 +104,13 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, currentZPos);
 
+    }
+
+    private void ProcessFire() {
+
+        if (_fireAction.IsPressed()) {
+
+            Debug.Log("Fire key pressed!!!");
+        }
     }
 }
