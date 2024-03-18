@@ -576,6 +576,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.b
+      value: 0.18679237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.g
+      value: 0.18679237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411438421050893966, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6026853074464003375, guid: 2b5d99c2b98eed44cac12f48f78b8306, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.66
