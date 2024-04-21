@@ -1,11 +1,13 @@
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour {
 
+    [Header("General Setup Settings")]
     [SerializeField] InputActionAsset _playerActionsAsset;
 
-    [SerializeField] float _moveSpeed = 1f;
+    [Tooltip("Speed of ship for horizontal and vertical movement.")][SerializeField] float _moveSpeed = 1f;
 
     // The GameObject this is attached to must be at (0;0) for coherence and camara centered
     [SerializeField] float _xAxisRange = 5f;
@@ -17,10 +19,12 @@ public class PlayerControls : MonoBehaviour {
     InputAction _moveAction;
     InputAction _fireAction;
 
+    [Header("XY Position-based Tuning")]
     [SerializeField] float _pitchPositionFactor = 1f;
     [SerializeField] float _rollPositionFactor = 1f;
     [SerializeField] float _yawPositionFactor = 1f;
 
+    [Header("Direction-based Tuning")]
     [SerializeField] float _pitchThrowFactor = 1f;
     [SerializeField] float _rollThrowFactor = 1f;
 
