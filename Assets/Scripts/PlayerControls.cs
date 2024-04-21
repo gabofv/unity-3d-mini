@@ -5,15 +5,15 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour {
 
     [Header("General Setup Settings")]
-    [SerializeField] InputActionAsset _playerActionsAsset;
+    [Tooltip("Input Action Asset for all player actions. (change later)")][SerializeField] InputActionAsset _playerActionsAsset;
 
-    [Tooltip("Speed of ship for horizontal and vertical movement.")][SerializeField] float _moveSpeed = 1f;
+    [Tooltip("Speed of ship for horizontal and vertical movement.")] [SerializeField] float _moveSpeed = 1f;
 
     // The GameObject this is attached to must be at (0;0) for coherence and camara centered
     [SerializeField] float _xAxisRange = 5f;
     [SerializeField] float _yAxisRange = 5f;
 
-    [SerializeField] GameObject[] _lasers;
+    [Tooltip("Add all player lasers here!")] [SerializeField] GameObject[] _lasers;
 
     InputActionMap _controlsActionMap;
     InputAction _moveAction;
