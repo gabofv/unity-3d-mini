@@ -112,43 +112,28 @@ public class PlayerControls : MonoBehaviour {
 
         if (_fireAction.IsPressed()) {
 
-            ActivateLasers();
+            SetLaserActive(true);
         }
         else {
 
-            DeactivateLasers();
+            SetLaserActive(false);
         }
     }
 
-    private void ActivateLasers() {
+    private void SetLaserActive(bool isActive) {
 
-        foreach (GameObject laser in _lasers) {
+        // Play() and Stop() not used because after stopping it 
+        // waits until particles dissappear to Play again.
 
-            // Play() and Stop() not used because after stopping it 
-            // waits until particles dissappear to Play again.
-
-            // Activating and deactivating GameObject makes existing
-            // particles dissappear
-
-            var particleSystem = laser.GetComponent<ParticleSystem>();
-            var emission = particleSystem.emission;
-
-            if (!emission.enabled) {
-                emission.enabled = true;
-            }
-        }
-    }
-
-    private void DeactivateLasers() {
+        // Activating and deactivating GameObject makes existing
+        // particles dissappear
 
         foreach (GameObject laser in _lasers) {
 
             var particleSystem = laser.GetComponent<ParticleSystem>();
             var emission = particleSystem.emission;
 
-            if (emission.enabled) {
-                emission.enabled = false;
-            }
+            emission.enabled = isActive;
         }
     }
 
