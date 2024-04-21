@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour {
 
     [Header("General Setup Settings")]
-    [Tooltip("Input Action Asset for all player actions. (change later)")][SerializeField] InputActionAsset _playerActionsAsset;
+    [Tooltip("Input Action Asset for Player Controls.")] [SerializeField] InputActionAsset _playerActionsAsset;
 
     [Tooltip("Speed of ship for horizontal and vertical movement.")] [SerializeField] float _moveSpeed = 1f;
 
