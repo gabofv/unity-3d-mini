@@ -11,6 +11,8 @@ public class PlayerControls : MonoBehaviour {
     [SerializeField] float _xAxisRange = 5f;
     [SerializeField] float _yAxisRange = 5f;
 
+    [SerializeField] GameObject[] _lasers;
+
     InputActionMap _controlsActionMap;
     InputAction _moveAction;
     InputAction _fireAction;
@@ -110,7 +112,44 @@ public class PlayerControls : MonoBehaviour {
 
         if (_fireAction.IsPressed()) {
 
-            Debug.Log("Fire key pressed!!!");
+            ActivateLasers();
+        }
+        else {
+
+            DeactivateLasers();
         }
     }
+
+    private void ActivateLasers() {
+
+        foreach (GameObject laser in _lasers) {
+
+            // Play() and Stop() not used because after stopping it 
+            // waits until particles dissappear to Play again.
+
+            // Activating and deactivating GameObject makes existing
+            // particles dissappear
+
+            var particleSystem = laser.GetComponent<ParticleSystem>();
+            var emission = particleSystem.emission;
+
+            if (!emission.enabled) {
+                emission.enabled = true;
+            }
+        }
+    }
+
+    private void DeactivateLasers() {
+
+        foreach (GameObject laser in _lasers) {
+
+            var particleSystem = laser.GetComponent<ParticleSystem>();
+            var emission = particleSystem.emission;
+
+            if (emission.enabled) {
+                emission.enabled = false;
+            }
+        }
+    }
+
 }
