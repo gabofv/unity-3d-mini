@@ -24,7 +24,7 @@ public class PlayerControls : MonoBehaviour {
     [SerializeField] float _rollPositionFactor = 1f;
     [SerializeField] float _yawPositionFactor = 1f;
 
-    [Header("Direction-based Tuning")]
+    [Header("Player Input-based Tuning")]
     [SerializeField] float _pitchThrowFactor = 1f;
     [SerializeField] float _rollThrowFactor = 1f;
 
